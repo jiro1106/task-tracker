@@ -2,13 +2,14 @@
 
 ## Part 1: Task Sorter
 
-This project contains the Part 1 PHP task sorter and the Part 2 Laravel task API.
+This project contains the Part 1 PHP task sorter, Part 2 Laravel task API, and Part 3 React frontend.
 
 ### Requirements
 
 - PHP 8.5 or later
 - Composer
-- Docker Desktop (for Part 2)
+- Docker Desktop (for Parts 2 and 3)
+- Node.js and npm (for Part 3)
 
 ### Run locally
 
@@ -60,12 +61,31 @@ The API uses Laravel Sail, Docker, and MySQL. Docker Desktop must be running bef
 
 The API is available at `http://localhost/api/tasks`.
 
-| Method | Endpoint | Purpose |
-| --- | --- | --- |
-| GET | `/api/tasks` | List tasks; optionally filter with `?status=pending` or `?status=completed` |
-| POST | `/api/tasks` | Create a task |
-| PATCH | `/api/tasks/{id}/complete` | Mark a task as completed |
-| DELETE | `/api/tasks/{id}` | Delete a task |
+## Part 3: Frontend
+
+With the Sail containers running, install the frontend dependencies and start Vite in another terminal:
+
+```bash
+cd laravel
+npm install
+npm run dev
+```
+
+Open `http://localhost`. The UI lets you create tasks, choose a priority, filter by status, complete tasks, and delete tasks without a page refresh.
+
+To create a production frontend bundle instead:
+
+```bash
+cd laravel
+npm run build
+```
+
+| Method | Endpoint                   | Purpose                                                                     |
+| ------ | -------------------------- | --------------------------------------------------------------------------- |
+| GET    | `/api/tasks`               | List tasks; optionally filter with `?status=pending` or `?status=completed` |
+| POST   | `/api/tasks`               | Create a task                                                               |
+| PATCH  | `/api/tasks/{id}/complete` | Mark a task as completed                                                    |
+| DELETE | `/api/tasks/{id}`          | Delete a task                                                               |
 
 To stop the Part 2 containers when finished:
 
@@ -75,8 +95,6 @@ To stop the Part 2 containers when finished:
 
 ## AI Disclosure
 
-- **AI tool used:** Codex.
-- **AI-assisted areas:** Initial drafts of `src/TaskSorter.php`, `tests/TaskSorterTest.php`, the Laravel task API, and this README.
-- **Candidate review:** I reviewed the TaskSorter and API code, verified the Part 1 PHPUnit tests, and manually verified each Part 2 API route.
-
-This disclosure and the setup instructions will be updated as Part 3 and Part 4 are completed.
+- **AI tool used:** ChatGPT/Codex.
+- **AI-assisted areas:** Initial drafts of `src/TaskSorter.php`, `tests/TaskSorterTest.php`, the Laravel task API, React frontend, frontend API helpers/tests, and this README.
+- **Candidate review:** I reviewed the TaskSorter, API, and frontend code; made substantial UI revisions after the AI-generated frontend draft; verified the Part 1 PHPUnit tests; manually verified each Part 2 API route; and ran the frontend production build plus its API-helper tests.
