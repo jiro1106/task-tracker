@@ -97,4 +97,4 @@ To stop the Part 2 containers when finished:
 
 - **AI tool used:** ChatGPT/Codex.
 - **AI-assisted areas:** Initial drafts of `src/TaskSorter.php`, `tests/TaskSorterTest.php`, the Laravel task API, React frontend, frontend API helpers/tests, and this README.
-- **Candidate review:** I reviewed the TaskSorter, API, and frontend code; made substantial UI revisions after the AI-generated frontend draft; verified the Part 1 PHPUnit tests; manually verified each Part 2 API route; and ran the frontend production build plus its API-helper tests.
+- **Candidate review and changes:** I manually read and reviewed all submitted code to ensure I understand every line. I cleaned up variable names for clarity, redesigned the frontend after the initial AI-generated draft, and reviewed the AI-assisted code for bugs, unused files, and unnecessary logic. I also verified the Part 1 PHPUnit tests, manually tested each Part 2 API route, and ran the frontend production build and API-helper tests.
