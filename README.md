@@ -97,7 +97,7 @@ To stop the Part 2 containers when finished:
 
 ## AI Disclosure
 
-- **AI tools used:** ChatGPT and Codex.
+- **AI tools used:** ChatGPT/Codex.
 
 - **AI-assisted areas:**
   - Initial implementation of `src/TaskSorter.php` and `tests/TaskSorterTest.php`
@@ -108,7 +108,7 @@ To stop the Part 2 containers when finished:
 - **My review, changes, and verification:**
   - Reviewed the submitted code to understand the sorting, API, and frontend request flows.
   - Added API validation for invalid status filters, titles longer than 255 characters, and non-string descriptions.
-  - Fixed the frontend API helper so it keeps the JSON `Accept` header when sending POST requests and shows a useful error if an API response is not JSON.
   - Redesigned and refined the initial AI-generated frontend layout, including the table layout, adding a delete confirmation modal to prevent accidental deletes, loading states, error messages and empty states, and disabled action buttons while requests are running.
   - Removed unused Laravel starter scaffolding and tests that did not cover required assessment behavior.
   - Ran the Part 1 PHPUnit tests and the frontend production build successfully.
+  - Ran all the API routes using curl commands in the terminal to manually create a task, update it as complete, and delete it while verifying in the frontend.
