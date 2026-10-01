@@ -31,6 +31,8 @@ This project contains the Part 1 PHP task sorter, Part 2 Laravel task API, and P
 
 The API uses Laravel Sail, Docker, and MySQL. Docker Desktop must be running before these commands.
 
+Docker is used to provide the same Laravel and MySQL environment on every machine, avoiding differences in locally installed PHP, Laravel, or MySQL versions.
+
 1. Install the Laravel dependencies and create the local environment file:
 
    ```bash
@@ -95,6 +97,18 @@ To stop the Part 2 containers when finished:
 
 ## AI Disclosure
 
-- **AI tool used:** ChatGPT/Codex.
-- **AI-assisted areas:** Initial drafts of `src/TaskSorter.php`, `tests/TaskSorterTest.php`, the Laravel task API, React frontend, frontend API helpers/tests, and this README.
-- **Candidate review and changes:** I reviewed all submitted code to ensure I understand it. During review, I added server-side guards for invalid status filters, overlong titles, and non-string descriptions; fixed the frontend API helper so JSON headers are preserved and non-JSON failures show a useful error; redesigned the frontend after the AI generated code for the initial frontend layout; and removed unused Laravel starter scaffolding and tests that did not cover required behavior. I verified the Part 1 PHPUnit tests and production build.
+- **AI tools used:** ChatGPT and Codex.
+
+- **AI-assisted areas:**
+  - Initial implementation of `src/TaskSorter.php` and `tests/TaskSorterTest.php`
+  - Laravel task API, including routes, model, migration, and controller
+  - React task-tracker interface, CSS, and frontend API helper
+  - README setup documentation
+
+- **My review, changes, and verification:**
+  - Reviewed the submitted code to understand the sorting, API, and frontend request flows.
+  - Added API validation for invalid status filters, titles longer than 255 characters, and non-string descriptions.
+  - Fixed the frontend API helper so it keeps the JSON `Accept` header when sending POST requests and shows a useful error if an API response is not JSON.
+  - Redesigned and refined the initial AI-generated frontend layout, including the table layout, adding a delete confirmation modal to prevent accidental deletes, loading states, error messages and empty states, and disabled action buttons while requests are running.
+  - Removed unused Laravel starter scaffolding and tests that did not cover required assessment behavior.
+  - Ran the Part 1 PHPUnit tests and the frontend production build successfully.
