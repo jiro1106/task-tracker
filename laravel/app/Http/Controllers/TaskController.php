@@ -11,8 +11,14 @@ class TaskController extends Controller
     {
         $query = Task::query();
 
-        if ($request->filled('status')) {
-            $query->where('status', $request->query('status'));
+        if ($request->has('status')) {
+            $status = $request->query('status');
+
+            if (! in_array($status, ['pending', 'completed'], true)) {
+                return response()->json(['message' => 'Status must be pending or completed.'], 400);
+            }
+
+            $query->where('status', $status);
         }
 
         return response()->json($query->get());
@@ -26,15 +32,25 @@ class TaskController extends Controller
             return response()->json(['message' => 'Title is required.'], 400);
         }
 
+        if (mb_strlen(trim($title)) > 255) {
+            return response()->json(['message' => 'Title must not exceed 255 characters.'], 400);
+        }
+
         $priority = $request->input('priority', 'low');
 
         if (! in_array($priority, ['low', 'medium', 'high'], true)) {
             return response()->json(['message' => 'Priority must be low, medium, or high.'], 400);
         }
 
+        $description = $request->input('description');
+
+        if (! is_null($description) && ! is_string($description)) {
+            return response()->json(['message' => 'Description must be a string.'], 400);
+        }
+
         $task = new Task;
         $task->title = trim($title);
-        $task->description = $request->input('description');
+        $task->description = $description;
         $task->priority = $priority;
         $task->status = 'pending';
         $task->save();

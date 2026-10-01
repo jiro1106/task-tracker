@@ -4,13 +4,13 @@ export function tasksUrl(status) {
 
 export async function requestJson(url, options = {}) {
     const response = await fetch(url, {
-        headers: { Accept: 'application/json', ...options.headers },
         ...options,
+        headers: { Accept: 'application/json', ...options.headers },
     });
-    const data = await response.json();
+    const data = await response.json().catch(() => null);
 
     if (!response.ok) {
-        throw new Error(data.message || 'Request failed.');
+        throw new Error(data?.message || 'Request failed.');
     }
 
     return data;
